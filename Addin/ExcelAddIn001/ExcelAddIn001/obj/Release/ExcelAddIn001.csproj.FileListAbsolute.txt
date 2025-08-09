@@ -1,0 +1,14 @@
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\bin\Release\ExcelAddIn001.dll
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\bin\Release\ExcelAddIn001.pdb
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\bin\Release\ExcelAddIn001.dll.manifest
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\bin\Release\ExcelAddIn001.vsto
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.csproj.AssemblyReference.cache
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.Properties.Resources.resources
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.Ribbon1.resources
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.Ribbon2.resources
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.csproj.GenerateResource.cache
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.csproj.CoreCompileInputs.cache
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.csproj.CopyComplete
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.dll
+D:\01_Work\01_Source\Addin\ExcelAddIn001\ExcelAddIn001\obj\Release\ExcelAddIn001.pdb

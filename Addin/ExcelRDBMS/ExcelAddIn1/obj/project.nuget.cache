@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fP+1PJ7znT4=",
+  "success": true,
+  "projectFilePath": "D:\\01_Work\\Git\\Git001\\Addin\\ExcelRDBMS\\ExcelAddIn1\\ExcelAddIn1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fc\\.nuget\\packages\\oracle.manageddataaccess\\12.2.1100\\oracle.manageddataaccess.12.2.1100.nupkg.sha512"
+  ],
+  "logs": []
+}

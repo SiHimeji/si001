@@ -1,0 +1,17 @@
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\ExcelVB001.dll
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\ExcelVB001.pdb
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\ExcelVB001.xml
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\ExcelVB001.dll.manifest
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\ExcelVB001.vsto
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.vbproj.AssemblyReference.cache
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.Ribbon1.resources
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.Resources.resources
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.vbproj.GenerateResource.cache
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.vbproj.CoreCompileInputs.cache
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.vbproj.Up2Date
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.dll
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.xml
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\obj\Debug\ExcelVB001.pdb
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\BouncyCastle.Cryptography.dll
+D:\01_Work\01_Source\Addin\ExcelVB001\ExcelVB001\bin\Debug\itextsharp.dll

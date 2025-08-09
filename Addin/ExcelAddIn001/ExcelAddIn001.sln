@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34729.46
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelAddIn001", "ExcelAddIn001\ExcelAddIn001.csproj", "{1A791158-13EC-41CD-8980-D1A5B93376CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A791158-13EC-41CD-8980-D1A5B93376CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A791158-13EC-41CD-8980-D1A5B93376CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A791158-13EC-41CD-8980-D1A5B93376CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A791158-13EC-41CD-8980-D1A5B93376CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C70C2F7-E4E3-4C7A-84AF-4F967E60B614}
+	EndGlobalSection
+EndGlobal

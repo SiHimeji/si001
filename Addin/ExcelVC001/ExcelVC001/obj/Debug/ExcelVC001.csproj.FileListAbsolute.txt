@@ -1,0 +1,13 @@
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.csproj.AssemblyReference.cache
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.Properties.Resources.resources
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.Ribbon1.resources
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.csproj.GenerateResource.cache
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.csproj.CoreCompileInputs.cache
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\bin\Debug\ExcelVC001.dll
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\bin\Debug\ExcelVC001.pdb
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\bin\Debug\ExcelVC001.dll.manifest
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\bin\Debug\ExcelVC001.vsto
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.csproj.Up2Date
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.dll
+D:\01_Work\01_Source\Addin\ExcelVC001\ExcelVC001\obj\Debug\ExcelVC001.pdb
