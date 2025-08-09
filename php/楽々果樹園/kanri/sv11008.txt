@@ -1,0 +1,40 @@
+FTP
+Adres sv11008.star.ne.jp
+User si@ss611756.stars.ne.jp
+PAss sihimeji0251
+
+
+URL
+ss611756.stars.ne.jp/test.php
+
+
+ä«óùâÊñ 
+https://secure.netowl.jp/starapanel/login/starserver/server
+User ms365@si-himeji.co.jp
+Pass sihimeji0251
+
+
+DB
+ss611756_db
+pass  sihimeji0251
+
+https://ss611756.stars.ne.jp/test1.php
+https://ss611756.stars.ne.jp/test.php
+https://ss611756.stars.ne.jp/testgps.html
+https://ss611756.stars.ne.jp/testgps1.html
+
+https://ss611756.stars.ne.jp/test1.php?u=abc
+https://ss611756.stars.ne.jp/testgps01.php?u=abc
+
+----
+https://ss611756.stars.ne.jp/kanri/rakurakukanri01.php
+
+--
+https://ss611756.stars.ne.jp/rakurakukintai01.php?u=abc
+
+
+https://ss611756.stars.ne.jp/kanri/test.html
+
+
+https://ss611756.stars.ne.jp/kanri/r4.php
+

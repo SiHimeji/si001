@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地図表示</title>
+  <style>
+    #map {
+      height: 50vh; /* 画面全体の高さ */
+      width: 50%;   /* 横幅を全体に */
+    }
+  </style>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+
+var ido;
+var keido;
+
+function showMap(position) {
+    /*位置情報を表示する*/
+    var coords = position.coords;
+    ido = coords.latitude;
+    keido =coords.longitude;
+    alert('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
+
+
+}
+
+function handleError(error) {
+    /*取得失敗のアラートを表示する*/
+    alert('位置情報を取得できません。');
+}
+
+function getGeoLocation(){
+    if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition == 'function') {
+        /*位置情報を取得可能な場合*/
+        navigator.geolocation.getCurrentPosition(showMap,handleError);
+    }
+    else {
+        /*位置情報を取得不可能な場合*/
+        handleError();
+    }
+}
+//-->
+</script>
+
+</head>
+<body>
+
+<script>
+	getGeoLocation();
+  </script>
+  <iframe
+	src="https://www.google.com/maps?output=embed&z=15&ll=34.862969, 134.608107&z=17&q=34.862969, 134.608107"
+	width="600"
+	height="450"
+	frameborder="0"
+	style="border: 0;"
+	allowfullscreen=""
+	aria-hidden="false"
+	tabindex="0"
+/>
+
+<a href="javascript:void(0);" onclick="getGeoLocation();">現在置を確認する</a>
+
+</body>
+</html>
+
