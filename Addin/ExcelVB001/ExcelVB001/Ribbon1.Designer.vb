@@ -46,9 +46,9 @@
         Me.ButtonItiran = Me.Factory.CreateRibbonButton
         Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Buttonページ数 = Me.Factory.CreateRibbonButton
-        Me.Button1 = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.Buttonパスワード = Me.Factory.CreateRibbonButton
+        Me.Button1 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -85,22 +85,22 @@
         Me.Buttonページ数.Label = "ページ数"
         Me.Buttonページ数.Name = "Buttonページ数"
         '
-        'Button1
-        '
-        Me.Button1.Label = "Button1"
-        Me.Button1.Name = "Button1"
-        Me.Button1.ShowImage = True
-        '
         'Group2
         '
         Me.Group2.Items.Add(Me.Buttonパスワード)
-        Me.Group2.Label = "-----PDF暗号-----"
+        Me.Group2.Label = "-PDFパスワード-"
         Me.Group2.Name = "Group2"
         '
         'Buttonパスワード
         '
         Me.Buttonパスワード.Label = "パスワード"
         Me.Buttonパスワード.Name = "Buttonパスワード"
+        '
+        'Button1
+        '
+        Me.Button1.Label = "Button1"
+        Me.Button1.Name = "Button1"
+        Me.Button1.ShowImage = True
         '
         'Ribbon1
         '
