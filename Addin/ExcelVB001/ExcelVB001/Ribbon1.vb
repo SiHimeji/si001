@@ -127,8 +127,6 @@ Public Class Ribbon1
             objPDFCopy.Dispose()
         End Try
 
-        MsgBox("結合終了" & vbCr & sOutPDFPath)
-
         Return True
 
     End Function
@@ -156,10 +154,4 @@ Public Class Ribbon1
         Loop
 
     End Sub
-    '////// パスワード設定
-    Private Sub Buttonパスワード_Click(sender As Object, e As RibbonControlEventArgs) Handles Buttonパスワード.Click
-        Dim f1 As New FormPdfPass
-        f1.ShowDialog()
-    End Sub
-
 End Class
