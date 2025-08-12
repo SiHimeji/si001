@@ -112,7 +112,7 @@ Partial Class FormPdfPass
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(482, 124)
+        Me.ClientSize = New System.Drawing.Size(480, 137)
         Me.Controls.Add(Me.TextBoxPass2)
         Me.Controls.Add(Me.TextBoxPass1)
         Me.Controls.Add(Me.Button検索)

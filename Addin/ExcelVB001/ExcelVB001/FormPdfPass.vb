@@ -10,12 +10,15 @@ Imports System.Diagnostics
 Public Class FormPdfPass
     Private Sub Button実行_Click(sender As Object, e As EventArgs) Handles Button実行.Click
 
-        Dim ret As Boolean = SetPdfPassword(TextBoxFileName.Text, TextBoxPass1.Text, TextBoxPass2.Text)
-        If ret Then
-            MessageBox.Show("パスワードを設定しました")
+
+        Dim ret As Boolean = SetPdfPassword(Me.TextBoxFileName.Text, Me.TextBoxPass1.Text, Me.TextBoxPass2.Text)
+        If (ret) Then
+            Me.Close()
+        Else
+
+
         End If
 
-        Me.Close()
     End Sub
     '/// <summary>
     '/// PDFファイルへパスワードを設定する
@@ -36,6 +39,7 @@ Public Class FormPdfPass
     Private Function SetPdfPassword(sPdfPath As String, sPass1 As String, sPass2 As String) As Boolean
         Dim bRet As Boolean = True
         Dim dtNow As DateTime = DateTime.Now
+
 
         Dim sLoclTm As String = String.Format("{0}{1:D2}{2:D2}{3:D2}{4:D2}{5:D2}{6}",
                                             dtNow.Year,
@@ -64,6 +68,7 @@ Public Class FormPdfPass
                                                                  FileAccess.Write,
                                                                  FileShare.None)
 
+
                 PdfEncryptor.Encrypt(objPdfReader,
                                      objStreamOutput,
                                      byteUSER,
@@ -81,7 +86,7 @@ Public Class FormPdfPass
         Catch ex As Exception
             bRet = False
         Finally
-            objPdfReader.Close()
+            'objPdfReader.Close()
         End Try
 
         Return bRet
@@ -123,6 +128,7 @@ Public Class FormPdfPass
             'OKボタンがクリックされたとき、選択されたファイル名を表示する
             TextBoxFileName.Text = ofd.FileName
         End If
+
 
     End Sub
 End Class

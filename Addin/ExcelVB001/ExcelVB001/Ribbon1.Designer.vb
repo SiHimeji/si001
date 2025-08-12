@@ -47,14 +47,18 @@
         Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Buttonページ数 = Me.Factory.CreateRibbonButton
         Me.Button1 = Me.Factory.CreateRibbonButton
+        Me.Group2 = Me.Factory.CreateRibbonGroup
+        Me.Buttonパスワード = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
+        Me.Group2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Tab1
         '
         Me.Tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office
         Me.Tab1.Groups.Add(Me.Group1)
+        Me.Tab1.Groups.Add(Me.Group2)
         Me.Tab1.Label = "TabAddIns"
         Me.Tab1.Name = "Tab1"
         '
@@ -68,7 +72,7 @@
         '
         'ButtonItiran
         '
-        Me.ButtonItiran.Label = "一覧所得"
+        Me.ButtonItiran.Label = "一覧取得"
         Me.ButtonItiran.Name = "ButtonItiran"
         '
         'Button2
@@ -87,6 +91,17 @@
         Me.Button1.Name = "Button1"
         Me.Button1.ShowImage = True
         '
+        'Group2
+        '
+        Me.Group2.Items.Add(Me.Buttonパスワード)
+        Me.Group2.Label = "-----PDF暗号-----"
+        Me.Group2.Name = "Group2"
+        '
+        'Buttonパスワード
+        '
+        Me.Buttonパスワード.Label = "パスワード"
+        Me.Buttonパスワード.Name = "Buttonパスワード"
+        '
         'Ribbon1
         '
         Me.Name = "Ribbon1"
@@ -100,6 +115,8 @@
         Me.Tab1.PerformLayout()
         Me.Group1.ResumeLayout(False)
         Me.Group1.PerformLayout()
+        Me.Group2.ResumeLayout(False)
+        Me.Group2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -110,6 +127,8 @@
     Friend WithEvents Button2 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Buttonページ数 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button1 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents Buttonパスワード As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
