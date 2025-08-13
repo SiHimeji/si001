@@ -15,8 +15,7 @@ Public Class FormPdfPass
         If (ret) Then
             Me.Close()
         Else
-
-
+            MsgBox("パスワード設定エラー")
         End If
 
     End Sub
@@ -105,7 +104,7 @@ Public Class FormPdfPass
         ofd.FileName = "default.pdf"
         'はじめに表示されるフォルダを指定する
         '指定しない（空の文字列）の時は、現在のディレクトリが表示される
-        ofd.InitialDirectory = "C:\"
+        ofd.InitialDirectory = ""
         '[ファイルの種類]に表示される選択肢を指定する
         '指定しないとすべてのファイルが表示される
         ofd.Filter = "PDFファイル(*.pdf;*.pdf)|*.pdf;*.pdf|すべてのファイル(*.*)|*.*"

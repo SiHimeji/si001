@@ -44,9 +44,9 @@ Partial Class FormPdfPass
         '
         'Button実行
         '
-        Me.Button実行.Location = New System.Drawing.Point(218, 83)
+        Me.Button実行.Location = New System.Drawing.Point(126, 83)
         Me.Button実行.Name = "Button実行"
-        Me.Button実行.Size = New System.Drawing.Size(75, 23)
+        Me.Button実行.Size = New System.Drawing.Size(167, 23)
         Me.Button実行.TabIndex = 1
         Me.Button実行.Text = "実行"
         Me.Button実行.UseVisualStyleBackColor = True
