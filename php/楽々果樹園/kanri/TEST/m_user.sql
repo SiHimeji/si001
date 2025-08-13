@@ -66,3 +66,9 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE VIEW v_all as
+select m_user.id,m_user.user,m_user.adres,m_user.uid
+,t_timecard.tm,t_timecard.gps,t_timecard.work
+from m_user left outer join t_timecard on t_timecard.adres=m_user.adres

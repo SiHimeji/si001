@@ -1,0 +1,122 @@
+Option Explicit
+
+Sub Main()
+    Dim maxPathIndex As Integer
+    maxPathIndex = 10 ' パスの配列の最大値（仮）を表す定数
+    
+    ' パスの配列を初期化
+    Dim paths() As Variant
+    ReDim paths(1 To maxPathIndex)
+    
+    ' パスの配列にファイルパスを設定
+    paths(1) = "YourPath01"
+    paths(2) = "YourPath02"
+    
+    ' 圧縮されたZIPファイルの保存先としてファイル名を指定
+    Dim zipFileName As String
+
+    zipFileName = "ZipPath01"
+
+    Call CompressFilesToZIP(paths, zipFileName)
+End Sub
+
+
+
+Function CompressFilesToZIP(ByVal paths As Variant, ByVal zipFileName As String)
+    ' 圧縮対象のファイルパスとZIPファイル名を定義
+    Dim srcFilePath As String
+    
+    ' パスの配列を連結し、末尾のカンマを除いた文字列を取得
+    srcFilePath = ConcatPathsAndRemoveComma(paths)
+    
+    ' ZIPファイルを作成するサブルーチンを呼び出し
+    Call ExecutePowerShellZIPCompression(zipFileName, srcFilePath)
+    
+End Function
+
+Function ConcatPathsAndRemoveComma(ByVal paths As Variant) As String
+    ' パスの配列を連結し、末尾のカンマを除いた文字列を返す関数
+    Dim result As String
+    Dim i As Integer
+    Dim maxIndex As Integer
+    
+    ' パスの配列の最大値を取得
+    maxIndex = GetMaxIndex(paths)
+
+    ' パスの配列をカンマで連結
+    For i = LBound(paths) To maxIndex
+        result = result & paths(i) & ","
+    Next i
+    
+    ' 末尾のカンマを除く
+    If Right(result, 1) = "," Then
+        result = Left(result, Len(result) - 1)
+    End If
+    
+    ' 連結した文字列を返す
+    ConcatPathsAndRemoveComma = result
+End Function
+
+Function ExecutePowerShellZIPCompression(ByVal zipFileName As String, ByVal srcFilePaths As String)
+    ' ZIPファイルを作成するサブルーチン
+    Dim PowerShellCmd As String
+    Dim objWsh As Object
+    Dim execResult As Long
+    
+    ' WScript.Shell オブジェクトを生成
+    Set objWsh = CreateObject("WScript.Shell")
+   
+    ' ファイルパスとZIPファイル名に対して置換処理を実行
+    srcFilePaths = ReplaceForPowerShell(srcFilePaths)
+    zipFileName = ReplaceForPowerShell(zipFileName)
+    
+    ' ZIPファイルを作成するためのPowerShellコマンドを生成
+    PowerShellCmd = "powershell -NoLogo -ExecutionPolicy RemoteSigned -Command Compress-Archive -Path " & srcFilePaths & " -DestinationPath " & zipFileName & " -Force"
+    
+    ' ZIPファイルがすでに存在するか確認
+    If Dir(zipFileName) = "" Then
+        ' PowerShellコマンドを実行
+        execResult = objWsh.Run(Command:=PowerShellCmd, WindowStyle:=0, WaitOnReturn:=True)
+    End If
+    
+    ' エラーを処理
+    If execResult = 1 Then
+        Stop ' エラーが発生しました
+    Else
+        ' エラーは発生しませんでした。
+    End If
+    
+    ' WScript.Shell オブジェクトを解放
+    Set objWsh = Nothing
+End Function
+
+Function ReplaceForPowerShell(ByVal inputString As String) As String
+    ' スペースを含む文字列をバッククォートでエスケープ
+    ReplaceForPowerShell = Replace(inputString, " ", "` ")
+
+    ' 全角スペースを含む文字列をバッククォートでエスケープ
+    ReplaceForPowerShell = Replace(ReplaceForPowerShell, "　", "`　")
+
+    ' 開きカッコをバッククォートでエスケープ
+    ReplaceForPowerShell = Replace(ReplaceForPowerShell, "(", "`(")
+
+    ' 閉じカッコをバッククォートでエスケープ
+    ReplaceForPowerShell = Replace(ReplaceForPowerShell, ")", "`)")
+
+    ' 長音記号（ー）をバッククォートでエスケープ
+    ReplaceForPowerShell = Replace(ReplaceForPowerShell, "ー", "`ー")
+
+    ' 下線記号（＿）をバッククォートでエスケープ
+    ReplaceForPowerShell = Replace(ReplaceForPowerShell, "＿", "`＿")
+End Function
+
+
+Function GetMaxIndex(ByVal arr As Variant) As Integer
+    ' 配列の最大インデックスを取得する関数
+    Dim i As Integer
+    i = LBound(arr)
+    Do While i <= UBound(arr) And Not IsEmpty(arr(i))
+        i = i + 1
+    Loop
+    GetMaxIndex = i - 1
+End Function

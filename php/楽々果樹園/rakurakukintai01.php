@@ -14,11 +14,17 @@ $conn=mysqli_connect($db_host,$db_id,$db_pass) or die("データベース接続�
 mysqli_select_db($conn,$db_name) or die("指定されたデータベースは存在しません。");
 
 $sql = "SELECT * FROM v_all where adres='". $idname . "' order by tm desc;";
+
 if($result=mysqli_query($conn,$sql)){
  	if($row = mysqli_fetch_assoc($result))
 	{
+
+
 		$name =	$row['user'];
 		$work =	$row['work'];
+
+		if($work=="")$work="0";
+		//echo '['.$work.']';
 
 		if($work=="2" || $work=="0"){
  			$bt ="作業開始";
