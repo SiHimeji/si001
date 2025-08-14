@@ -1,5 +1,86 @@
 Option Explicit
 
+---------------------------------------------------------------------------------------------
+
+Function MakeZip(a_sPath As String, a_sZipPath As String) As Boolean
+    Dim sh      As New IWshRuntimeLibrary.WshShell
+    Dim ex      As WshExec
+    Dim sCmd    As String
+    
+    '// 半角スペースをバッククォートでエスケープ
+    a_sPath = Replace(a_sPath, " ", "` ")
+    a_sZipPath = Replace(a_sZipPath, " ", "` ")
+    
+    '// Compress-Archive：圧縮コマンド
+    '// -Path：フォルダパスまたはファイルパスを指定する。
+    '// -DestinationPath：生成ファイルパスを指定する。
+    '// -Force：生成ファイルが既に存在している場合は上書きする
+    sCmd = "Compress-Archive -Path " & a_sPath & " -DestinationPath " & a_sZipPath & " -Force"
+    
+    '// コマンド実行
+    Set ex = sh.Exec("powershell -NoLogo -ExecutionPolicy RemoteSigned -Command " & sCmd)
+    
+    '// コマンド失敗時
+    If ex.Status = WshFailed Then
+        '// 戻り値に異常を返す
+        MakeZip = False
+        
+        '// 処理を抜ける
+        Exit Function
+    End If
+    
+    '// コマンド実行中は待ち
+    Do While ex.Status = WshRunning
+        DoEvents
+    Loop
+    
+    '// 戻り値に正常を返す
+    MakeZip = True
+End Function
+
+
+---------------------------------------------------------------------------------------------
+
+Function UnZip(a_sZipPath As String, a_sExpandPath As String) As Boolean
+    Dim sh      As New IWshRuntimeLibrary.WshShell
+    Dim ex      As WshExec
+    Dim sCmd    As String
+    
+    '// 半角スペースをバッククォートでエスケープ
+    a_sZipPath = Replace(a_sZipPath, " ", "` ")
+    a_sExpandPath = Replace(a_sExpandPath, " ", "` ")
+    
+    '// Expand-Archive：解凍コマンド
+    '// -Path：フォルダパスまたはファイルパスを指定する。Automated document conversion software
+    '// -DestinationPath：生成ファイルパスを指定する。
+    '// -Force：生成ファイルが既に存在している場合は上書きする
+    sCmd = "Expand-Archive -Path " & a_sZipPath & " -DestinationPath " & a_sExpandPath & " -Force"
+    
+    '// コマンド実行
+    Set ex = sh.Exec("powershell -NoLogo -ExecutionPolicy RemoteSigned -Command " & sCmd)
+    
+    '// コマンド失敗時
+    If ex.Status = WshFailed Then
+        '// 戻り値に異常を返す
+        UnZip = False
+        
+        '// 処理を抜ける
+        Exit Function
+    End If
+    
+    '// コマンド実行中は待ち
+    Do While ex.Status = WshRunning
+        DoEvents
+    Loop
+    
+    '// 戻り値に正常を返す
+    UnZip = True
+End Function
+
+---------------------------------------------------------------------------------------------
+
+
+
 Sub Main()
     Dim maxPathIndex As Integer
     maxPathIndex = 10 ' パスの配列の最大値（仮）を表す定数
