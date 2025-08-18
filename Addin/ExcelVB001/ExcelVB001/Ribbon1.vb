@@ -1,11 +1,12 @@
-﻿Imports System.Windows.Forms
-Imports iTextSharp.text
-Imports iTextSharp.text.pdf
-Imports Microsoft.Office.Tools.Ribbon
-Imports iTextSharp
+﻿Imports System.Diagnostics
 'Imports iTextSharp.text.pdf
 Imports System.IO
-Imports System.Diagnostics
+Imports System.Windows.Forms
+Imports iTextSharp
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
+Imports Microsoft.Office.Interop.Excel
+Imports Microsoft.Office.Tools.Ribbon
 
 
 Public Class Ribbon1
@@ -161,5 +162,104 @@ Public Class Ribbon1
         Dim f1 As New FormPdfPass
         f1.ShowDialog()
     End Sub
+
+    Private Sub Button分解_Click(sender As Object, e As RibbonControlEventArgs) Handles Button分解.Click
+
+        Dim FileName As String = GetFileName()
+        Dim Directory As String = System.IO.Path.GetDirectoryName(FileName)
+
+        If SplitPDFfile(FileName, Directory) = False Then
+            MessageBox.Show("エラーが発生したよ。")
+        End If
+    End Sub
+
+    Private Function GetFileName()
+        Dim ofd As New OpenFileDialog()
+        ofd.FileName = "default.pdf"
+        ofd.InitialDirectory = ""
+        ofd.Filter = "PDFファイル(*.pdf;*.pdf)|*.pdf;*.pdf|すべてのファイル(*.*)|*.*"
+        ofd.FilterIndex = 2
+        ofd.Title = "開くファイルを選択してください"
+        ofd.RestoreDirectory = True
+        ofd.CheckFileExists = True
+        ofd.CheckPathExists = True
+        If ofd.ShowDialog() = DialogResult.OK Then
+            GetFileName = ofd.FileName
+        Else
+            GetFileName = ""
+        End If
+    End Function
+
+
+    '/// <summary>
+    '    /// PDFファイルを1ページ毎に分割し、ファイル出力する。
+    '    /// </summary>
+    '    /// <param name="sOrigPDFPath">
+    '    /// ]分割対象のPDFパス
+    '    /// </param>
+    '    /// <param name="sOutPutDir">
+    '    /// 分割後出力ディレクトリパス
+    '    /// </param>
+    '    /// <returns>
+    '    /// true:正常
+    '    /// false:以上
+    '    /// </returns>
+    Private Function SplitPDFfile(sOrigPDFPath As String, sOutPutDir As String) As Boolean
+        Dim bRet As Boolean = True                          '// 戻り値
+        Dim sOrigFileName As String = Path.GetFileName(sOrigPDFPath)
+        Dim objPdfReader As PdfReader = New PdfReader(sOrigPDFPath)
+        Dim nCount As Integer
+
+        For nCount = 1 To objPdfReader.NumberOfPages
+
+            Dim objITextDoc As Document = Nothing
+            Dim objPDFWriter As PdfWriter = Nothing
+            Dim objPDFContByte As PdfContentByte = Nothing
+            Dim objPDFImpPage As PdfImportedPage = Nothing
+
+            Try
+                Dim sNewPDFPath As String = sOutPutDir & "\" & nCount.ToString("D4") & "_" & sOrigFileName
+                objITextDoc = New Document(objPdfReader.GetPageSize(nCount))
+                objPDFWriter = PdfWriter.GetInstance(objITextDoc, New FileStream(sNewPDFPath, FileMode.OpenOrCreate))
+                objPDFWriter.Open()
+                'objPDFWriter.SetEncryption(PdfWriter.STRENGTH128BITS,       ' // 暗号化の強度（128bit暗号）
+                '                                "pass1",                    ' // ユーザーパスワード 
+                '                                "pass2",                    ' // オーナーパスワード
+                '                                PdfWriter.ALLOW_COPY Or     ' // コピーを許可
+                '                                PdfWriter.ALLOW_PRINTING)   ' // 印刷を許可
+                objITextDoc.Open()
+                objPDFContByte = objPDFWriter.DirectContent
+                objITextDoc.NewPage()
+
+
+
+                objPDFImpPage = objPDFWriter.GetImportedPage(objPdfReader, nCount)
+
+                objPDFContByte.AddTemplate(objPDFImpPage, 0, 0)
+
+                'objITextDoc.AddKeywords("PDF分割してみた、キーワード")
+                'objITextDoc.AddAuthor("作者")
+                'objITextDoc.AddTitle("PDFファイル分割")
+                'objITextDoc.AddCreator("PDFファイル分割くん")
+                'objITextDoc.AddSubject("分割してみた")
+                'Debug.WriteLine(sNewPDFPath)
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+                bRet = False
+            Finally
+                objITextDoc.Close()
+                objPDFWriter.Close()
+            End Try
+            If bRet = False Then
+                Exit For
+            End If
+        Next
+        objPdfReader.Close()
+        Return bRet
+    End Function
+
+
+
 
 End Class

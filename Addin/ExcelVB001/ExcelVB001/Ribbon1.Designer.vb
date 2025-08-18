@@ -44,13 +44,16 @@
         Me.Tab1 = Me.Factory.CreateRibbonTab
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.ButtonItiran = Me.Factory.CreateRibbonButton
-        Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Buttonページ数 = Me.Factory.CreateRibbonButton
+        Me.Button2 = Me.Factory.CreateRibbonButton
+        Me.Group3 = Me.Factory.CreateRibbonGroup
+        Me.Button分解 = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.Buttonパスワード = Me.Factory.CreateRibbonButton
         Me.Button1 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
+        Me.Group3.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,6 +61,7 @@
         '
         Me.Tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office
         Me.Tab1.Groups.Add(Me.Group1)
+        Me.Tab1.Groups.Add(Me.Group3)
         Me.Tab1.Groups.Add(Me.Group2)
         Me.Tab1.Label = "TabAddIns"
         Me.Tab1.Name = "Tab1"
@@ -75,15 +79,26 @@
         Me.ButtonItiran.Label = "一覧取得"
         Me.ButtonItiran.Name = "ButtonItiran"
         '
+        'Buttonページ数
+        '
+        Me.Buttonページ数.Label = "ページ数"
+        Me.Buttonページ数.Name = "Buttonページ数"
+        '
         'Button2
         '
         Me.Button2.Label = "PDF結合"
         Me.Button2.Name = "Button2"
         '
-        'Buttonページ数
+        'Group3
         '
-        Me.Buttonページ数.Label = "ページ数"
-        Me.Buttonページ数.Name = "Buttonページ数"
+        Me.Group3.Items.Add(Me.Button分解)
+        Me.Group3.Label = "-----PDF-----"
+        Me.Group3.Name = "Group3"
+        '
+        'Button分解
+        '
+        Me.Button分解.Label = "PDF分解"
+        Me.Button分解.Name = "Button分解"
         '
         'Group2
         '
@@ -115,6 +130,8 @@
         Me.Tab1.PerformLayout()
         Me.Group1.ResumeLayout(False)
         Me.Group1.PerformLayout()
+        Me.Group3.ResumeLayout(False)
+        Me.Group3.PerformLayout()
         Me.Group2.ResumeLayout(False)
         Me.Group2.PerformLayout()
         Me.ResumeLayout(False)
@@ -129,6 +146,8 @@
     Friend WithEvents Button1 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents Buttonパスワード As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group3 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents Button分解 As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

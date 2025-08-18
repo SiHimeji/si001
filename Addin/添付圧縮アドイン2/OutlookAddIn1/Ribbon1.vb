@@ -34,6 +34,23 @@ Partial Public Class Ribbon1
                 Exit Sub
             End If
 
+            '------2025/07/15 MH1--------
+            i = 0
+            '同名の添付ファイルがあるかチェック
+            If cnt > 0 Then
+                Dim strFileName(cnt) As String
+                For i = 1 To cnt
+                    Dim attachFile As Outlook.Attachment = MailItem.Attachments(i)
+                    strFileName(i) = attachFile.FileName
+                Next
+                Dim uniqueStrings As New HashSet(Of String)(strFileName)
+                If uniqueStrings.Count < strFileName.Length Then
+                    MsgBox("添付ファイル名に重複があります。", vbCritical)
+                    Exit Sub
+                End If
+            End If
+            '----------------------------
+
             wp = GetWorkPath() & "\"
             compressFile = wp & GetZipName()
             'cnt = MailItem.Attachments.Count
@@ -49,15 +66,20 @@ Partial Public Class Ribbon1
                 aryFilePath.Add(originalFile)
                 attachFile.Delete()
             Else
+                i = 0
                 'メールの添付ファイルを取得・削除
-                For i = cnt - 1 To 0 Step -1
-                    Dim attachFile As Outlook.Attachment = MailItem.Attachments(i + 1)
+                For i = 1 To cnt
+                    ''For i = cnt - 1 To 0 Step -1
+                    Dim attachFile As Outlook.Attachment = MailItem.Attachments(1)
                     originalFile = wp & attachFile.FileName
                     attachFile.SaveAsFile(originalFile)
                     aryFilePath.Add(originalFile)
                     attachFile.Delete()
                 Next
             End If
+
+            '圧縮した時にコメントを挿入 ---k.s---
+            MailItem.Body = SetBodyText(MailItem.Body)
 
             'ファイルの圧縮
             zip.fnCompressFilesWithPassword(aryFilePath, compressFile, pw)
@@ -74,13 +96,17 @@ Partial Public Class Ribbon1
             copyMail.Body = strBody
             cnt = copyMail.Attachments.Count
 
+            i = 0
             If cnt > 0 Then
-                For i = cnt - 1 To 0
-                    Dim attachFile As Outlook.Attachment = copyMail.Attachments(i + 1)
+                'For i = cnt - 1 To 0
+                '    Dim attachFile As Outlook.Attachment = copyMail.Attachments(i + 1)
+                '    attachFile.Delete()
+                'Next
+                For i = 1 To cnt
+                    Dim attachFile As Outlook.Attachment = copyMail.Attachments(1)
                     attachFile.Delete()
                 Next
             End If
-
 
             PStrSubject(0) = MailItem.Subject
             PStrSubject(1) = copyMail.Subject
@@ -184,6 +210,9 @@ Partial Public Class Ribbon1
                 Exit Sub
             End If
 
+            'メール1個目の添付ファイルを取得　---k.s---
+            frmSyudo.FNAME = MailItem.Attachments.Item(1).FileName
+
             '「手動で圧縮」画面を開く
             frmSyudo.ShowDialog()
 
@@ -204,37 +233,52 @@ Partial Public Class Ribbon1
             Dim zip As SevenZManager = New SevenZManager()
             Dim aryFilePath As List(Of String) = New List(Of String)()
 
-            'メールの添付ファイルを取得・削除
-            For i = cnt - 1 To 0 Step -1
-                Dim attachFile As Outlook.Attachment = MailItem.Attachments(i + 1)
+            If cnt = 1 Then
+                Dim attachFile As Outlook.Attachment = MailItem.Attachments(1)
                 originalFile = wp & attachFile.FileName
                 attachFile.SaveAsFile(originalFile)
                 aryFilePath.Add(originalFile)
                 attachFile.Delete()
-            Next
+            Else
+                'メールの添付ファイルを取得・削除
+                For i = 1 To cnt
+                    Dim attachFile As Outlook.Attachment = MailItem.Attachments(1)
+                    originalFile = wp & attachFile.FileName
+                    attachFile.SaveAsFile(originalFile)
+                    aryFilePath.Add(originalFile)
+                    attachFile.Delete()
+                Next
+            End If
+
+            '圧縮した時にコメントを挿入 ---k.s---
+            MailItem.Body = SetBodyText(MailItem.Body)
+
             'ファイルの圧縮
             zip.fnCompressFilesWithPassword(aryFilePath, compressFile, pw)
             '-----------------------------------------------------------
 
+            displayName = Path.GetFileName(compressFile)
             MailItem.Attachments.Add(compressFile, DisplayName:=displayName)
 
             strBody = SetText(MailItem.Subject, displayName, pw)
 
-            Dim copyMail As Outlook.MailItem = MailItem.Copy()
+            copyMail = MailItem.Copy()
             copyMail.BodyFormat = Outlook.OlBodyFormat.olFormatPlain
             copyMail.Subject = MailItem.Subject & " [パスワード通知]"
             copyMail.Body = strBody
             cnt = copyMail.Attachments.Count
 
             If cnt > 0 Then
-
-                For i = cnt - 1 To 0
-                    Dim attachFile As Outlook.Attachment = copyMail.Attachments(i + 1)
+                For i = 1 To cnt
+                    Dim attachFile As Outlook.Attachment = copyMail.Attachments(1)
                     attachFile.Delete()
                 Next
             End If
+
+            PStrSubject(0) = MailItem.Subject
+            PStrSubject(1) = copyMail.Subject
+
             copyMail.Display()
-            'DeleteSentMail(MailItem.Subject)
 
         Catch ex As System.Exception
             MsgBox("Message : " & ex.Message)

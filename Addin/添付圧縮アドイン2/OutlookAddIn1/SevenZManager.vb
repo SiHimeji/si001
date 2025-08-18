@@ -3,23 +3,12 @@ Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
 Imports System.Text
 
-#Const x86 = False
-#Const x64 = True
-
 Public Class SevenZManager
-
-#If x86 Then
+    '<Runtime.InteropServices.DllImport("7-zip64.dll")>
     <Runtime.InteropServices.DllImport("7-zip32.dll")>
     Private Shared Sub SevenZip(hwnd As IntPtr, szCmdLine As String, szOutput As StringBuilder, dwSize As Integer)
         'ここには何も記述しません。
     End Sub
-#End If
-#If x64 Then
-    <Runtime.InteropServices.DllImport("7-zip64.dll")>
-    Private Shared Sub SevenZip(hwnd As IntPtr, szCmdLine As String, szOutput As StringBuilder, dwSize As Integer)
-        'ここには何も記述しません。
-    End Sub
-#End If
 
     'Private lockObject As New Object()
     Public Function fnCompressFilesWithPassword(aryFilePath As List(Of String), s7zFilePath As String, sPassword As String) As Boolean

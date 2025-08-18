@@ -32,7 +32,7 @@
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>C:\作業領域\添付圧縮アドイン\02_setup%2886%29\</PublishUrl>
+    <PublishUrl>C:\作業領域\x86\</PublishUrl>
     <InstallUrl />
     <TargetCulture>ja</TargetCulture>
     <ApplicationVersion>2.0.0.0</ApplicationVersion>

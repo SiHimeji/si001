@@ -42,7 +42,8 @@ Module modPass
     Public Function GetZipName() As String
         Dim fname As String
         Dim dt As DateTime = DateTime.Now
-        fname = dt.ToString("yyyyMMdd-HHmm") & ".zip"
+        'fname = dt.ToString("yyyyMMdd-HHmm") & ".zip"          '---k.s---
+        fname = dt.ToString("yyyyMMdd") & ".zip"
         Return fname
     End Function
 
@@ -137,5 +138,28 @@ Module modPass
         End Try
 
     End Sub
+
+    '-------------------------------------s.k--
+    '圧縮した時に送信者の上にコメントを入れる
+    '------------------------------------------
+    Public Function SetBodyText(ByVal strB As String) As String
+        Dim strTxt As String = "※パスワードは別便にて送付いたします。"
+        Dim outstrB As String
+
+        Dim zipStr As String = strB
+        Dim splitStr() As String = zipStr.Split(vbCrLf)
+        Dim stritem As String
+
+        outstrB = ""
+        For Each item As String In splitStr
+            stritem = item.Replace(vbLf, "")
+            If Left(stritem, 4) = "送信者：" Then
+                outstrB = outstrB & strTxt & vbCrLf & vbCrLf & stritem & vbCrLf
+            Else
+                outstrB = outstrB & stritem & vbCrLf
+            End If
+        Next
+        Return outstrB
+    End Function
 
 End Module
