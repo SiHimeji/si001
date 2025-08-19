@@ -60,6 +60,7 @@
             // 
             this.editBox年月.Label = "年月";
             this.editBox年月.Name = "editBox年月";
+            this.editBox年月.Text = null;
             // 
             // butto抽出
             // 
