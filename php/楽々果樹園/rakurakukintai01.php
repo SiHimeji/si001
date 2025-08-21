@@ -24,7 +24,7 @@ if($result=mysqli_query($conn,$sql)){
 		$work =	$row['work'];
 
 		if($work=="")$work="0";
-		//echo '['.$work.']';
+//echo '['.$work.']';
 
 		if($work=="2" || $work=="0"){
  			$bt ="作業開始";

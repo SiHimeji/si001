@@ -52,7 +52,7 @@ Public Class Ribbon1
     End Function
 
 
-    Private Sub Button1_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonItiran.Click
+    Private Sub ButtonPDF取得_Click(sender As Object, e As RibbonControlEventArgs) Handles ButtonItiran.Click
 
         Dim activeSheet As Microsoft.Office.Interop.Excel.Worksheet
         activeSheet = Globals.ThisAddIn.Application.ActiveSheet
@@ -74,7 +74,7 @@ Public Class Ribbon1
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As RibbonControlEventArgs) Handles Button2.Click
+    Private Sub Button結合_Click(sender As Object, e As RibbonControlEventArgs) Handles Button2.Click
 
         Dim fillname As String = setFileName()
         If fillname <> "" Then JoinPdf(fillname)
@@ -162,6 +162,12 @@ Public Class Ribbon1
         Dim f1 As New FormPdfPass
         f1.ShowDialog()
     End Sub
+    Private Sub Button解除_Click(sender As Object, e As RibbonControlEventArgs) Handles Button解除.Click
+        Dim f1 As New FormPdfPassKaijyo
+        f1.ShowDialog()
+    End Sub
+    '//---------------------------------------------分解
+#Region "分解"
 
     Private Sub Button分解_Click(sender As Object, e As RibbonControlEventArgs) Handles Button分解.Click
 
@@ -258,8 +264,6 @@ Public Class Ribbon1
         objPdfReader.Close()
         Return bRet
     End Function
-
-
-
+#End Region
 
 End Class

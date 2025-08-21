@@ -32,7 +32,7 @@ include 'id_local.php';
     $msg= "失敗しました";
   }
   mysqli_close($conn);
-
+//echo $sql;
  ?>
 
 <!DOCTYPE html>

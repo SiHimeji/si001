@@ -239,6 +239,12 @@
     <Compile Include="FormPdfPass.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormPdfPassKaijyo.Designer.vb">
+      <DependentUpon>FormPdfPassKaijyo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPdfPassKaijyo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Ribbon1.Designer.vb">
       <DependentUpon>Ribbon1.vb</DependentUpon>
     </Compile>
@@ -250,6 +256,9 @@
     </Compile>
     <EmbeddedResource Include="FormPdfPass.resx">
       <DependentUpon>FormPdfPass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPdfPassKaijyo.resx">
+      <DependentUpon>FormPdfPassKaijyo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ribbon1.resx">
       <DependentUpon>Ribbon1.vb</DependentUpon>

@@ -50,6 +50,7 @@
         Me.Button分解 = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.Buttonパスワード = Me.Factory.CreateRibbonButton
+        Me.Button解除 = Me.Factory.CreateRibbonButton
         Me.Button1 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
@@ -103,13 +104,19 @@
         'Group2
         '
         Me.Group2.Items.Add(Me.Buttonパスワード)
+        Me.Group2.Items.Add(Me.Button解除)
         Me.Group2.Label = "-PDFﾊﾟｽﾜｰﾄﾞ-"
         Me.Group2.Name = "Group2"
         '
         'Buttonパスワード
         '
-        Me.Buttonパスワード.Label = "パスワード"
+        Me.Buttonパスワード.Label = "パスワード設定"
         Me.Buttonパスワード.Name = "Buttonパスワード"
+        '
+        'Button解除
+        '
+        Me.Button解除.Label = "パスワード解除"
+        Me.Button解除.Name = "Button解除"
         '
         'Button1
         '
@@ -148,6 +155,7 @@
     Friend WithEvents Buttonパスワード As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group3 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents Button分解 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Button解除 As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

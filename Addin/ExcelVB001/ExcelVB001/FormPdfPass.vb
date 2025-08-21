@@ -1,18 +1,19 @@
-﻿Imports System.IO
-Imports iTextSharp.text.pdf
-Imports System.Windows.Forms
-Imports iTextSharp.text
-Imports Microsoft.Office.Tools.Ribbon
-Imports iTextSharp
-'Imports iTextSharp.text.pdf
+﻿'Imports iTextSharp.text.pdf
 Imports System.Diagnostics
+Imports System.Diagnostics.Eventing
+Imports System.IO
+Imports System.Windows.Forms
+Imports iTextSharp
+Imports iTextSharp.text
+Imports iTextSharp.text.pdf
+Imports Microsoft.Office.Tools.Ribbon
 
 Public Class FormPdfPass
     Private Sub Button実行_Click(sender As Object, e As EventArgs) Handles Button実行.Click
 
-
         Dim ret As Boolean = SetPdfPassword(Me.TextBoxFileName.Text, Me.TextBoxPass1.Text, Me.TextBoxPass2.Text)
         If (ret) Then
+            MsgBox("パスワード設定しました")
             Me.Close()
         Else
             MsgBox("パスワード設定エラー")
@@ -130,4 +131,10 @@ Public Class FormPdfPass
 
 
     End Sub
+
+
+
+
+
+
 End Class
